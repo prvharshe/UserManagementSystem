@@ -1,0 +1,59 @@
+﻿@model UserManagementSystem.UserDetail
+
+@{
+    ViewBag.Title = "AfterLogin";
+}
+
+<h2>AfterLogin</h2>
+
+@if (Session["LogedUserID"] != null)
+{
+    <text>
+        Welcome
+    </text>
+}
+
+<style>
+    .sub-menu {
+        display: none;
+    }
+
+    .main-menu > li:hover .sub-menu {
+        display: block;
+    }
+
+    .main-menu {
+        padding: 20px,10px,20px,10px;
+    }
+</style>
+<ul class="main-menu">
+    <li>
+        <b>USER MANAGEMENT</b>
+        
+        <ul class="sub-menu">
+
+@if (TempData.Peek("LoginId").Equals(1))
+    {
+    <li onclick="location.href='Register';"><b>NEW USER</b></li>
+
+
+    }
+
+    else
+    {
+        ViewBag.ErrMessage = "U are not Admin";
+
+    }
+<li onclick="location.href='Retrieve';"><b>SEARCH FOR A USER </b></li>
+            
+                @*<li onclick="location.href='Register';"><b> NEW USER</b></li>*@
+                @*<li onclick="location.href='Retrieve';"><b>SEARCH FOR A USER </b></li>*@
+
+
+</ul>
+            
+    </li>
+</ul>
+<div>
+    @Html.ActionLink("Back to List", "Login")
+</div>

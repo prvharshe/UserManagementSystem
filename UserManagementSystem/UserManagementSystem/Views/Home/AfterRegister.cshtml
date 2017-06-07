@@ -1,0 +1,16 @@
+﻿@model UserManagementSystem.UserDetail
+
+@{
+    ViewBag.Title = "AfterRegister";
+}
+
+<h2>AfterRegister</h2>
+@if (Session["LogedUserID"] != null)
+{
+    <text>
+        REGISTERED SUCCESSFULLY
+    </text>
+}
+<div>
+    @Html.ActionLink("Back to List", "AfterLogin")
+</div>

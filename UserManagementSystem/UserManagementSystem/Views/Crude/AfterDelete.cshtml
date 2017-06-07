@@ -1,0 +1,16 @@
+﻿@model UserManagementSystem.UserDetail
+
+@{
+    ViewBag.Title = "AfterDelete";
+}
+
+<h2>AfterDelete</h2>
+@if (Session["LogedUserID"] != null)
+{
+    <text>
+        "Successfully Deleted!"
+    </text>
+}
+<div>
+    @Html.ActionLink("Back to List", "../Home/Retrieve")
+</div>

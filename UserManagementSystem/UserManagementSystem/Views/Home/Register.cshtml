@@ -1,0 +1,155 @@
+﻿@model UserManagementSystem.UserDetail
+<link href="~/mandatory.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Register";
+}
+
+ 
+@{
+    int lId = 0;
+    if (ViewBag.loginId != null) { 
+    lId = ViewBag.loginId;
+    }
+}
+<h2>Register New User</h2>
+@using (Html.BeginForm("Register", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.Message != null)
+    {
+        <div style="border:solid 1px green">
+            @ViewBag.Message
+        </div>
+    }
+    
+    <div class="editor-label">
+        
+        @Html.LabelFor(model => model.FirstName)
+    </div>
+    <div class="editor-field">
+        
+        @Html.EditorFor(model => model.FirstName)
+        @Html.ValidationMessageFor(model => model.FirstName)
+       
+       
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.LastName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.UserName, new { @class = "mandatory" })
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.UserName)
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Password, new { @class = "mandatory" })
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Contact)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Contact)
+        @Html.ValidationMessageFor(model => model.Contact)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.RoleId)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.RoleId)
+        @Html.ValidationMessageFor(model => model.RoleId)
+    </div>
+   
+
+
+
+    @*<div class="editor-label">
+        @Html.LabelFor(model => model.CreatedBy)
+    </div>
+    
+    <div class="editor-field">
+        @Html.EditorFor(model => model.CreatedBy)
+        @Html.ValidationMessageFor(model => model.CreatedBy)
+    </div>  
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CreatedOn)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.CreatedOn)
+        @Html.ValidationMessageFor(model => model.CreatedOn)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ModifiedBy)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ModifiedBy)
+        @Html.ValidationMessageFor(model => model.ModifiedBy)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ModifiedOn)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ModifiedOn)
+        @Html.ValidationMessageFor(model => model.ModifiedOn)
+    </div>*@
+    <div class="editor-label">
+        @Html.LabelFor(model => model.IsActive)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.IsActive)
+        @Html.ValidationMessageFor(model => model.IsActive)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.IsDeleted)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.IsDeleted)
+        @Html.ValidationMessageFor(model => model.IsDeleted)
+    </div>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+  
+  
+}
+
+<div>
+    @Html.ActionLink("Back", "AfterLogin")
+</div>
+@Scripts.Render("~/Scripts/Calender.js") 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+
+<script>
+    $(function () {
+        $("#CreatedOn").datepicker();
+    });
+    $(function () {
+        $("#ModifiedOn").datepicker();
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#CreatedBy").val('@lId');
+    });
+</script>
+

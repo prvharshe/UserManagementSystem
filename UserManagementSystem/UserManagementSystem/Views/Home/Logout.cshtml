@@ -1,0 +1,17 @@
+﻿@model UserManagementSystem.UserDetail
+
+@{
+    ViewBag.Title = "Logout";
+}
+
+<h2>Logout</h2>
+
+@if (Session["LogedUserID"] != null)
+{
+
+
+
+}
+<div>
+    @Html.ActionLink("Back", "Login")
+</div>

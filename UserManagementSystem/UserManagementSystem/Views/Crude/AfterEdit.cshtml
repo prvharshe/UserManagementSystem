@@ -1,0 +1,18 @@
+﻿@model UserManagementSystem.UserDetail
+
+@{
+    ViewBag.Title = "AfterEdit";
+}
+
+<h2>AfterEdit</h2>
+
+
+@if (Session["LogedUserID"] != null)
+{
+    <text>
+        "Successfully Edited!"
+    </text>
+}
+<div>
+    @Html.ActionLink("Back to List", "../Home/Retrieve")
+</div>

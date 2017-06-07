@@ -1,0 +1,124 @@
+﻿
+@model IEnumerable<UserManagementSystem.ViewModel.UserDetailViewModel>
+
+    @{
+        ViewBag.Title = "Search";
+    }
+    <div style="font-family:Arial">
+        <h2>Employee List</h2>
+        <p>
+            @using (@Html.BeginForm("Retrieve", "Home", FormMethod.Get))
+             {
+                <b>Search:</b>
+                @*@Html.RadioButton("searchBy", "UserName", true) <text>UserName</text>
+                    @Html.RadioButton("searchBy", "FirstName") <text>FirstName</text><br />*@
+                @Html.TextBox("search") <input type="submit" value="search" />
+            }
+        </p>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                text-align: center;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+        <table>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="4">
+                        No records match search criteria
+                    </td>
+                </tr>
+            }
+            else
+            {
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LoginId)
+                    </th>
+
+ <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+             
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.Contact)
+                    </th>
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoleName)
+                    </th>
+
+
+ 
+
+
+                    <th>Action</th>
+                </tr>
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LoginId)
+                        </td>
+                        <th>
+                            @Html.DisplayFor(model => item.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => item.LastName)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <th>
+                            @Html.DisplayFor(model => item.Contact)
+                        </th>
+                        
+                        <th>
+                            @Html.DisplayFor(model => item.RoleName)
+                        </th>
+
+
+
+                        <td>
+                            @Html.ActionLink("Edit", "../crude/edit", new { LoginId = item.LoginId }) |
+
+                            @Html.ActionLink("Delete", "../crude/delete", new { LoginId = item.LoginId })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+       
+
+    </div>
+    <div>
+        @Html.ActionLink("Back", "AfterLogin")
+    </div>
+ 
